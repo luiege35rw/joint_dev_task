@@ -8,7 +8,7 @@ $names = ["田中", "佐藤", "佐々木", "高橋"];
 
 array_push($names,"斉藤");
 
-echo($names);
+print_r($names);
 
 echo PHP_EOL;
 
@@ -42,10 +42,8 @@ $sports = ["サッカー", "フットサル", null, "野球", "バスケ", null,
 
 # 以下に回答を記載
 
-$sports_null = array_unique($sports);
-foreach ($sports_null as $value) {
-echo $value;
-}
+$sports = array_diff($sports, [null]);
+print_r($sports);
 
 echo PHP_EOL;
 
@@ -70,12 +68,23 @@ $numbers1 = [1, 2, 3, 4, 5];
 
 # 以下に回答を記載
 
+$numbers2 = [];
+foreach ($numbers1 as $value) {
+$value *= 10;
+array_push($numbers2, $value);
+}
+print_r($numbers2);
+
+
 echo PHP_EOL;
 
 print("#####q7#####".PHP_EOL);
 $array = ["1", "2", "3", "4", "5"];
 
 # 以下に回答を記載
+
+$array2 = array_map('intval', $array);
+var_dump($array2);
 
 # 以下は変更しないで下さい
 var_dump($array);
@@ -87,10 +96,13 @@ $programming_languages = ["php","ruby","python","javascript"];
 
 # 以下に回答を記載
 
-# 以下は変更しないで下さい
+$upper_case_programming_languages = array_map('strtoupper', $programming_languages);
+
 print_r($programming_languages);
 echo PHP_EOL;
 print_r($upper_case_programming_languages);
+
+
 
 echo PHP_EOL;
 
@@ -99,12 +111,28 @@ $names = ["田中", "佐藤", "佐々木", "高橋"];
 
 # 以下に回答を記載
 
+$names2 = [];
+foreach ($names as $key => $name) {
+$number = $key++;
+$name2 = "会員No." . $number . " " . $name;
+array_push($names2, $name2);
+}
+print_r($names2);
+
 echo PHP_EOL;
 
 print("#####q10#####".PHP_EOL);
 $foods = ["いか","たこ","うに","しゃけ","うにぎり","うに軍艦","うに丼","高級なうに"]];
 
 # 以下に回答を記載
+
+foreach ($foods as $food) {
+if (preg_match('/うに/', $food)) {
+print('好物です' . PHP_EOL);
+} else {
+print('まぁまぁ好きです' . PHP_EOL);
+}
+}
 
 echo PHP_EOL;
 
