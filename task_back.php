@@ -66,13 +66,19 @@ print_r($sports);
 //Q5. 配列が空であれば true，1つ以上の要素があれば false を出力するコードを書いて下さい。
 
 $array = [];
-$array2 = [3, 6, 9];
+var_export(!empty($array1));
 
-if (empty($array)) {
-    echo "true";
-} elseif (!empty($array2)) {
-    echo "false";
-}
+$array2 = [3, 6, 9];
+var_export(empty($array2));
+
+// if (empty($array)) {
+//     echo "true";
+// } elseif (!empty($array2)) {
+//     echo "false";
+// }
+
+
+
 
 echo PHP_EOL;
 
@@ -116,6 +122,9 @@ print_r($upper_case_programming_languages);
 
 // print_r($result);
 
+//
+
+$programming_languages = array_map('ucfirst', $programming_languages);
 $upper_case_programming_languages = array_map('strtoupper', $programming_languages);
 
 print_r($programming_languages);
@@ -153,3 +162,80 @@ foreach ($foods as $food) {
         print('まぁまぁ好きです' . PHP_EOL);
     }
 }
+
+// Q11 . 次の配列を用いて，期待する出力結果になるようにコードを書いて下さい。
+
+$sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]];
+
+$hobby = 'ユーザーの趣味一覧';
+
+echo $hobby;
+
+echo PHP_EOL;
+
+// $sports2 = [];
+// foreach ($sports as $key => $sport) {
+//     if (is_array($sport)) {
+//         $sports2 = array_merge($sports2, $sport);
+//     } else {
+//         array_push($sports2, $sport);
+//     }
+// }
+
+// $sports2 = array_unique($sports2);
+// $sports2 = array_values($sports2);
+
+// $sports3 = [];
+
+// foreach ($sports2 as $key => $sport) {
+//     $number = $key + 1;
+//     $sports3 = "No" . $number . " "
+//         . $sport;
+//     array_push($sports3, $sport);
+// }
+
+// print_r("ユーザの趣味一覧" . PHP_EOL);
+// foreach ($sports3 as $sport) {
+//     print($sport . PHP_EOL);
+// }
+
+// echo PHP_EOL;
+
+$sports2 = [];
+foreach ($sports as $sport) {
+    if (is_array($sport)) {
+        $sports2 = array_merge($sports2, $sport);
+    } else {
+        array_push($sports2, $sport);
+    }
+}
+$sports2 = array_unique($sports2);
+
+$number = 1;
+foreach ($sports2 as $sports3) {
+    echo "No" . $number . " " . $sports3 . PHP_EOL;
+    $number++;
+}
+
+
+
+// ユーザーの趣味一覧
+// No1 サッカー
+// No2 バスケ
+// No3 野球
+// No4 フットサル
+// No5 水泳
+// No6 ハンドボール
+// No7 卓球
+// No8 ボルダリング
+
+
+// Q12. 次の連想配列から name の値を出力して下さい。
+
+$data = ["user" => ["name" => "satou", "age" => 33]];
+
+// $array = array_column($data, 'name');
+
+// echo $data;
+
+print_r($data["user"]["name"]);

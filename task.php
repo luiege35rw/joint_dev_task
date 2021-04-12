@@ -53,9 +53,10 @@ $array2 = [1, 5, 8, 10];
 
 # 以下に回答を記載
 
-$array = [];
+$array1= [];
 $array2 = [1, 5, 8, 10];
-if (empty($array)) {
+
+if (empty($array1)) {
 echo "true";
 } elseif (!empty($array2)) {
 echo "false";
@@ -126,6 +127,8 @@ $foods = ["いか","たこ","うに","しゃけ","うにぎり","うに軍艦","
 
 # 以下に回答を記載
 
+$foods = ["いか", "たこ", "うに", "しゃけ", "うにぎり", "うに軍艦", "うに丼"];
+
 foreach ($foods as $food) {
 if (preg_match('/うに/', $food)) {
 print('好物です' . PHP_EOL);
@@ -141,12 +144,31 @@ $sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"],
 
 # 以下に回答を記載
 
+$sports2 = [];
+foreach ($sports as $sport) {
+if (is_array($sport)) {
+$sports2 = array_merge($sports2, $sport);
+} else {
+array_push($sports2, $sport);
+}
+}
+$sports2 = array_unique($sports2);
+
+$number = 1;
+foreach ($sports2 as $sports3) {
+echo "No" . $number . " " . $sports3 . PHP_EOL;
+$number++;
+}
+
 echo PHP_EOL;
 
 print("#####q12#####".PHP_EOL);
 $data = [ "user" => [ "name" => "satou", "age" => 33 ] ];
 
 # 以下に回答を記載
+
+print_r($data["user"]["name"]);
+
 
 echo PHP_EOL;
 
