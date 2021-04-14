@@ -53,14 +53,11 @@ $array2 = [1, 5, 8, 10];
 
 # 以下に回答を記載
 
-$array1= [];
-$array2 = [1, 5, 8, 10];
+$array = [];
+var_export(!empty($array1));
 
-if (empty($array1)) {
-echo "true";
-} elseif (!empty($array2)) {
-echo "false";
-}
+$array2 = [1, 5, 8, 10];
+var_export(empty($array2));
 
 echo PHP_EOL;
 
@@ -97,6 +94,14 @@ $programming_languages = ["php","ruby","python","javascript"];
 
 # 以下に回答を記載
 
+$programming_languages = ["php", "ruby", "python", "javascript"];
+
+print_r($programming_languages);
+echo PHP_EOL;
+print_r($upper_case_programming_languages);
+
+
+$programming_languages = array_map('ucfirst', $programming_languages);
 $upper_case_programming_languages = array_map('strtoupper', $programming_languages);
 
 print_r($programming_languages);
@@ -114,7 +119,7 @@ $names = ["田中", "佐藤", "佐々木", "高橋"];
 
 $names2 = [];
 foreach ($names as $key => $name) {
-$number = $key++;
+$number = $key+1;
 $name2 = "会員No." . $number . " " . $name;
 array_push($names2, $name2);
 }
@@ -129,11 +134,11 @@ $foods = ["いか","たこ","うに","しゃけ","うにぎり","うに軍艦","
 
 $foods = ["いか", "たこ", "うに", "しゃけ", "うにぎり", "うに軍艦", "うに丼"];
 
-foreach ($foods as $food) {
-if (preg_match('/うに/', $food)) {
-print('好物です' . PHP_EOL);
-} else {
-print('まぁまぁ好きです' . PHP_EOL);
+foreach($foods as $food){
+if(preg_match('/うに/',$food)){
+print('好物です'.PHP_EOL);
+}else{
+print('まぁまぁ好きです'.PHP_EOL);
 }
 }
 
@@ -153,6 +158,7 @@ array_push($sports2, $sport);
 }
 }
 $sports2 = array_unique($sports2);
+$sports2 = array_values($sports2);
 
 $number = 1;
 foreach ($sports2 as $sports3) {

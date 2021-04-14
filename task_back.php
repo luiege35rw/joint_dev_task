@@ -118,12 +118,6 @@ echo PHP_EOL;
 print_r($upper_case_programming_languages);
 
 
-// $result = array_change_key_case($programming_languages, CASE_UPPER);
-
-// print_r($result);
-
-//
-
 $programming_languages = array_map('ucfirst', $programming_languages);
 $upper_case_programming_languages = array_map('strtoupper', $programming_languages);
 
@@ -144,7 +138,7 @@ $names = ["田中", "佐藤", "佐々木", "高橋"];
 // }
 $names2 = [];
 foreach ($names as $key => $name) {
-    $number = $key++;
+    $number = $key + 1;
     $name2 = "会員No." . $number . " " . $name;
     array_push($names2, $name2);
 }
@@ -239,3 +233,9 @@ $data = ["user" => ["name" => "satou", "age" => 33]];
 // echo $data;
 
 print_r($data["user"]["name"]);
+
+
+// Q13. 次の $user_data に，$update_data の内容を反映させ，$user_data の内容を書き換え，出力して下さい。
+
+$user_data = ["name" => "神里", "age" => 31, "address" => "埼玉"];
+$update_data = ["age" => 32, "address" => "沖縄"];
