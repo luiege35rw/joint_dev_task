@@ -136,7 +136,7 @@ $foods = ["いか", "たこ", "うに", "しゃけ", "うにぎり", "うに軍�
 
 foreach($foods as $food){
 if(preg_match('/うに/',$food)){
-print('好物です'.PHP_EOL);
+　　 print('好物です'.PHP_EOL);
 }else{
 print('まぁまぁ好きです'.PHP_EOL);
 }
@@ -184,12 +184,18 @@ $update_data = [ "age" => 32, "address" => "沖縄" ];
 
 # 以下に回答を記載
 
+$update = array_merge($user_data, $update_data);
+print_r($update);
+
 echo PHP_EOL;
 
 print("#####q14#####".PHP_EOL);
 $data = [ "name" => "satou", "age" => 33, "address" => "saitama", "hobby" => "soccer", "email" => "hoge@fuga.com" ];
 
 # 以下に回答を記載
+
+print_r(array_values($data));
+
 
 echo PHP_EOL;
 
@@ -198,6 +204,19 @@ $data1 = [ "name" => "saitou", "hobby" => "soccer", "age" => 33, "role" => "admi
 $data2 = [ "name" => "yamada", "hobby" => "baseball", "role" => "normal" ];
 
 # 以下に回答を記載
+
+if (array_key_exists('age', $data1)) {
+echo 'OK';
+} else {
+echo 'NG';
+}
+
+
+if (array_key_exists('age', $data2)) {
+echo 'OK';
+} else {
+echo 'NG';
+}
 
 echo PHP_EOL;
 
@@ -210,6 +229,10 @@ $users = [
 ];
 
 # 以下に回答を記載
+
+foreach ($users as $user) {
+echo "私の名前は" . $user['name'] . "です。年齢は" . $user['age'] . "です";
+}
 
 echo PHP_EOL;
 

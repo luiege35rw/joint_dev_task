@@ -239,3 +239,65 @@ print_r($data["user"]["name"]);
 
 $user_data = ["name" => "神里", "age" => 31, "address" => "埼玉"];
 $update_data = ["age" => 32, "address" => "沖縄"];
+
+$update = array_merge($user_data, $update_data);
+print_r($update);
+
+echo PHP_EOL;
+
+
+// Q14 . 次の連想配列から全てのキー（添字）を取り出して、キーが数字である通常の配列（添字配列）を作成し，出力して下さい。
+
+$data = ["name" => "satou", "age" => 33, "address" => "saitama", "hobby" => "soccer", "email" => "hoge@fuga.com"];
+
+// $new_data = [];
+// foreach ($data as $sub_data) {
+//     array_push($new_data, $sub_data);
+// }
+// print_r($new_data);
+
+print_r(array_values($data));
+
+echo PHP_EOL;
+
+// Q15. age というキーが含まれている場合は OK ，含まれていない場合は NG という文字列が出力されるコードを書いて下さい。
+
+$data1 = ["name" => "saitou", "hobby" => "soccer", "age" => 33, "role" => "admin"];
+# 実行結果
+// OK
+
+$data2 = ["name" => "yamada", "hobby" => "baseball", "role" => "normal"];
+# 実行結果
+// NG
+
+// $new_data = array_merge($data1, $data2);
+
+// print_r($new_data);
+
+if (array_key_exists('age', $data1)) {
+    echo 'OK';
+} else {
+    echo 'NG';
+}
+
+
+if (array_key_exists('age', $data2)) {
+    echo 'OK';
+} else {
+    echo 'NG';
+}
+
+// Q16 . 次の配列の各要素について，「私の名前は〜です。年齢は〜歳です。」と表示して下さい。
+
+$users = [
+    ["name" => "satou", "age" => 22],
+    [
+        "name" => "yamada", "age" => 12
+    ],
+    ["name" => "takahashi", "age" => 32],
+    ["name" => "nakamura", "age" => 41]
+];
+
+foreach ($users as $user) {
+    echo  "私の名前は" . $user['name'] . "です。年齢は" . $user['age'] . "です";
+}
