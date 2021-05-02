@@ -301,3 +301,175 @@ $users = [
 foreach ($users as $user) {
     echo  "私の名前は" . $user['name'] . "です。年齢は" . $user['age'] . "です";
 }
+
+//Q17. 次の Userクラス 内にinfoメソッドを追加し，期待する出力結果になるようにして下さい。
+
+class User
+{
+
+    protected $name;
+    protected $age;
+    protected $gender;
+    //constructメソッドの引数を追加
+    function __construct($user_name, $user_age, $user_gender)
+    {
+        $this->name = $user_name;
+        $this->age = $user_age;
+        $this->gender = $user_gender;
+    }
+
+    function info()
+    {
+        print("名前:" . $this->name . PHP_EOL);
+        print("年齢:" . $this->age . PHP_EOL);
+        print("性別:" . $this->gender . PHP_EOL);
+    }
+}
+
+//constructメソッドの引数を返す
+$user1 = new User("神里", 32, "男");
+$user2 = new User("あじー", 32, "男");
+
+$user1->info();
+print("-------------" . PHP_EOL);
+$user2->info();
+echo PHP_EOL;
+
+
+//Q18. 年齢を用いた場合分けを利用して，期待する出力結果になるようなManクラスを作成して下さい。
+
+# コードを追加
+class Man
+{
+
+    protected $name;
+    protected $age;
+
+    function __construct($user_name, $user_age)
+    {
+        $this->name = $user_name;
+        $this->age = $user_age;
+    }
+
+    function introduce()
+    {
+        //年齢による場合分け条件分岐
+        if ($this->age >= 20) {
+            print("こんにちは," . $this->name . "と申します。宜しくお願いいたします。" . PHP_EOL);
+        } else {
+            print("はいさいまいど〜，" . $this->name . "です！！！" . PHP_EOL);
+        }
+    }
+}
+
+$man1 = new Man("あじー", 32);
+$man2 = new Man("ゆたぼん", 10);
+
+$man1->introduce();
+$man2->introduce();
+
+echo PHP_EOL;
+
+//Q19. 次のコードはエラーが出ます。期待する出力結果となるようにコードを修正して下さい。
+
+class Item
+{
+    //アクセス権をどこからでも可能にする
+    public $name;
+
+    function __construct($book_name)
+    {
+        $this->name = $book_name;
+    }
+}
+
+$book = new Item("ゼロ秒思考");
+print($book->name . PHP_EOL);
+
+echo PHP_EOL;
+
+
+//Q20. 次の仕様を満たした上で，期待する出力結果になるようにコードを追加して下さい。
+//年齢区分は，幼児(0〜5歳)，子供(6〜12歳)，成人(13〜64歳)，シニア(65〜120歳)の4パターンとします。（この範囲外の年齢については対処しなくてOKです）
+
+class Human
+{
+
+    public $name;
+    public $age;
+
+    function __construct($user_name, $user_age)
+    {
+        $this->name = $user_name;
+        $this->age = $user_age;
+    }
+}
+
+class Zoo
+{
+
+    protected $name;
+    protected $entry_fee;
+
+    function __construct($zoo_name, $zoo_entry_fee)
+    {
+        $this->name = $zoo_name;
+        $this->entry_fee = $zoo_entry_fee;
+    }
+
+    function info_entry_fee(Human $human)
+    {
+        if ($human->age <= 5) {
+            print($human->name . "さんの入場料金は " . $this->entry_fee["infant"] . " 円です。" . PHP_EOL);
+        } elseif ($human->age <= 12) {
+            print($human->name . "さんの入場料金は " . $this->entry_fee["children"] . " 円です。" . PHP_EOL);
+        } elseif ($human->age <= 64) {
+            print($human->name . "さんの入場料金は " . $this->entry_fee["adult"] . " 円です。" . PHP_EOL);
+        } elseif ($human->age <= 120) {
+            print($human->name . "さんの入場料金は " . $this->entry_fee["senior"] . " 円です。" . PHP_EOL);
+        }
+    }
+}
+
+$zoo = new Zoo("旭山動物園", ["infant" => 0, "children" => 400, "adult" => 800, "senior" => 500]);
+
+$human1 = new Human("たま", 3);
+$human2 = new Human("ゆたぼん", 10);
+$human3 = new Human("あじー", 32);
+$human4 = new Human("ぎん", 108);
+
+$humans = [$human1, $human2, $human3, $human4];
+
+foreach ($humans as $human) {
+    $zoo->info_entry_fee($human);
+}
+
+//Q21 FizzBuzz問題の応用問題です。次の仕様、条件を満たすコードを書いて下さい。
+
+// 1から30までの正の整数で
+// 3の倍数でFizzを出力
+// 5の倍数でBuzzを出力
+// 7の倍数でHogeを出力
+// それ以外は数値を出力
+//但し15はFizzBuzz, 21はFizzHogeなど、公倍数は複数単語が出力されるようにすること。
+
+// $num = 0;
+
+// for($i = 1; $i <=30; $1++) {
+//     if ($i % 3 === 0) {
+//         echo 'Fizz';
+//     }elseif($i % 5 === 0){
+//         echo 'Buzz';
+//     }elseif($i % 7 === 0){
+//         echo 'Hoge';
+//     }elseif($i % 3 === 0) && ($i >= 15){
+//         echo 'FizzBuzz';
+//     }elseif($i % 7 === 0 ) && ($i >= 21)
+//         echo 'FizzHoge';
+//     }else{
+// 　       foreach (range(1, 30) as $i) {
+//         echo $i, PHP_EOL;
+//     }
+
+//
+//     }

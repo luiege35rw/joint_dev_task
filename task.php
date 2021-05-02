@@ -240,12 +240,29 @@ print("#####q17#####".PHP_EOL);
 class User
 {
 
-# コードを追加
+protected $name;
+protected $age;
+protected $gender;
 
+//constructメソッドの引数を追加
+function __construct($user_name, $user_age, $user_gender)
+{
+$this->name = $user_name;
+$this->age = $user_age;
+$this->gender = $user_gender;
 }
 
-$user1 = new User("神里",32,"男");
-$user2 = new User("あじー",32,"男");
+function info()
+{
+print("名前:" . $this->name . PHP_EOL);
+print("年齢:" . $this->age . PHP_EOL);
+print("性別:" . $this->gender . PHP_EOL);
+}
+}
+
+//constructメソッドの引数を返す
+$user1 = new User("神里", 32, "男");
+$user2 = new User("あじー", 32, "男");
 
 $user1->info();
 print("-------------".PHP_EOL);
@@ -256,6 +273,26 @@ echo PHP_EOL;
 print("#####q18#####".PHP_EOL);
 
 # コードを追加
+
+
+protected $name;
+protected $age;
+
+function __construct($user_name, $user_age)
+{
+$this->name = $user_name;
+$this->age = $user_age;
+}
+
+function introduce()
+{
+//年齢による場合分け条件分岐
+if ($this->age >= 20) {
+print("こんにちは," . $this->name . "と申します。宜しくお願いいたします。" . PHP_EOL);
+} else {
+print("はいさいまいど〜，" . $this->name . "です！！！" . PHP_EOL);
+}
+}
 
 $man1 = new Man("あじー",32);
 $man2 = new Man("ゆたぼん",10);
@@ -269,7 +306,8 @@ print("#####q19#####".PHP_EOL);
 class Item{
 # 以下を修正して下さい
 
-protected $name;
+//アクセス権修正
+public $name;
 
 function __construct($book_name){
 $this->name = $book_name;
@@ -283,31 +321,57 @@ print($book->name.PHP_EOL);
 echo PHP_EOL;
 
 print("#####q20#####".PHP_EOL);
+
 class Human
 {
 
-# コードを追加
+public $name;
+public $age;
 
+function __construct($user_name, $user_age)
+{
+$this->name = $user_name;
+$this->age = $user_age;
+}
 }
 
 class Zoo
 {
 
-# コードを追加
+protected $name;
+protected $entry_fee;
 
+function __construct($zoo_name, $zoo_entry_fee)
+{
+$this->name = $zoo_name;
+$this->entry_fee = $zoo_entry_fee;
 }
 
-$zoo = new Zoo("旭山動物園",[ "infant" => 0, "children" => 400, "adult" => 800, "senior" => 500]);
+function info_entry_fee(Human $human)
+{
+if ($human->age <= 5) { print($human->name . "さんの入場料金は " . $this->entry_fee["infant"] . " 円です。" . PHP_EOL);
+    } elseif ($human->age <= 12) { print($human->name . "さんの入場料金は " . $this->entry_fee["children"] . " 円です。" . PHP_EOL);
+        } elseif ($human->age <= 64) { print($human->name . "さんの入場料金は " . $this->entry_fee["adult"] . " 円です。" . PHP_EOL);
+            } elseif ($human->age <= 120) { print($human->name . "さんの入場料金は " . $this->entry_fee["senior"] . " 円です。" . PHP_EOL);
+                }
+                }
+                }
 
-$human1 = new Human("たま",3);
-$human2 = new Human("ゆたぼん",10);
-$human3 = new Human("あじー",32);
-$human4 = new Human("ぎん",108);
+                $zoo = new Zoo("旭山動物園", ["infant" => 0, "children" => 400, "adult" => 800, "senior" => 500]);
 
-$humans = [ $human1, $human2, $human3, $human4 ];
+                $human1 = new Human("たま", 3);
+                $human2 = new Human("ゆたぼん", 10);
+                $human3 = new Human("あじー", 32);
+                $human4 = new Human("ぎん", 108);
 
-foreach($humans as $human){
-$zoo->info_entry_fee($human);
-}
+                $humans = [$human1, $human2, $human3, $human4];
 
-echo PHP_EOL;
+                foreach ($humans as $human) {
+                $zoo->info_entry_fee($human);
+                }
+                echo PHP_EOL;
+
+                print("#####q21#####".PHP_EOL);
+                //Q21. FizzBuzz問題の応用問題です。次の仕様、条件を満たすコードを書いて下さい。
+
+                echo PHP_EOL;
